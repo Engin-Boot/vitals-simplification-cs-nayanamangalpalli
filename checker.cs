@@ -5,34 +5,13 @@ class Checker
 {
     static bool vitalsAreOk(float bpm, float spo2, float respRate)
         {
-            bool ifCondition = checkBPM(bpm) && checkSPO2(spo2) && checkRespRate(respRate)
-            if(ifCondition){
+            bool _vitalsVariable = false
+           
+            if(checkBPM(bpm) && checkSPO2(spo2) && checkRespRate(respRate)){
                 
-                return true;
+                _vitalsVariable = true;
             }
-            return false;
-        }
-        
-        static bool checkSPO2(float spo2){
-            
-            if (spo2 < 90)
-            {
-                return false;
-            }
-            
-            return true;
-        
-        }
-        
-        static bool checkRespRate(float respRate){
-            
-            if (respRate < 30 || respRate > 95)
-            {
-                return false;
-            }
-            
-            return true;
-            
+            return _vitalsVariable;
         }
         
         static bool checkBPM(float bpm){
@@ -45,7 +24,26 @@ class Checker
             return true;
             
         }
+        static bool checkSPO2(float spo2){
+            
+            if (spo2 < 90)
+            {
+                return false;
+            }
+            return true;
+        }
         
+        static bool checkRespRate(float respRate){
+            
+            if (respRate < 30 || respRate > 95)
+            {
+                return false;
+            }
+            
+            return true;
+            
+        }
+   
     static void ExpectTrue(bool expression) {
         if(!expression) {
             Console.WriteLine("Expected true, but got false");
