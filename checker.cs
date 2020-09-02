@@ -3,16 +3,48 @@ using System.Diagnostics;
 
 class Checker
 {
-    static bool vitalsAreOk(float bpm, float spo2, float respRate) {
-        if(bpm < 70 || bpm > 150) {
-            return false;
-        } else if(spo2 < 90) {
-            return false;
-        } else if(respRate < 30 || respRate > 95) {
+    static bool vitalsAreOk(float bpm, float spo2, float respRate)
+        {
+            if(checkBPM(bpm) && checkSPO2(spo2) && checkRespRate(respRate)){
+                
+                return true;
+            }
             return false;
         }
-        return true;
-    }
+        
+        static bool checkSPO2(float spo2){
+            
+            if (spo2 < 90)
+            {
+                return false;
+            }
+            
+            return true;
+        
+        }
+        
+        static bool checkRespRate(float respRate){
+            
+            if (respRate < 30 || respRate > 95)
+            {
+                return false;
+            }
+            
+            return true;
+            
+        }
+        
+        static bool checkBPM(float bpm){
+            
+            if (bpm < 70 || bpm > 150)
+            {
+                return false;
+            }
+            
+            return true;
+            
+        }
+        
     static void ExpectTrue(bool expression) {
         if(!expression) {
             Console.WriteLine("Expected true, but got false");
