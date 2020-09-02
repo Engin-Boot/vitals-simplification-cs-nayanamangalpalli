@@ -5,7 +5,7 @@ class Checker
 {
     static bool vitalsAreOk(float bpm, float spo2, float respRate)
         {
-            if( checkSPO2(spo2) && checkBpmAndrespRate(bpm,respRate)){
+            if(checkSPO2(spo2) && checkBpmAndrespRate(bpm,respRate)){
                 return true;
             }
             return false;
