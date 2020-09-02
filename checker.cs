@@ -15,7 +15,7 @@ class Checker
             if(checkBPM(bpm) && checkRespRate(respRate)){
                 return true;
             }
-            return false
+            return false;
         }
         
         static bool checkBPM(float bpm){
