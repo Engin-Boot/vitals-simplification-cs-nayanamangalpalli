@@ -6,7 +6,7 @@ class Checker
 {
     static int Main() {
         
-        PatientVitalsStatus _patientVitalsStatus = new PatientVitalsStatus();
+        PatientVitalsStatus _patientVitals = new PatientVitalsStatus();
         
         VitalCheck.ExpectTrue(checkAll(100,95,60,_patientVitals));
         _patientVitals.displayAllVitalStatus();
@@ -18,7 +18,7 @@ class Checker
         return 0;
     }
     
-    static bool checkAll(float bmpValue,float spo2Value, float respRateValue, PatientVitals _patientVitals){
+    static bool checkAll(float bmpValue,float spo2Value, float respRateValue, PatientVitalsStatus _patientVitals){
         
         return BPMVital.checkBpmVital(bmpValue,_patientVitals) 
             && SPO2Vital.checkSpo2Vital (spo2Value,_patientVitals) 
@@ -107,17 +107,17 @@ class Checker
             return _maxBpm;
         }
         
-        public static bool checkBpmVital(float _bpmValue, PatientVitalsStatus _patientVitalsStatus){
+        public static bool checkBpmVital(float _bpmValue, PatientVitalsStatus _patientVitals){
             if (_bpmValue < _minBpm)
             {
-                _patientVitalsStatus.setBpmStatus("low");
+                _patientVitals.setBpmStatus("low");
                 return false;
             }
             else if(_bpmValue > _maxBpm){
-                _patientVitalsStatus.setBpmStatus("high");
+                _patientVitals.setBpmStatus("high");
                 return false; 
             }
-            _patientVitalsStatus.setBpmStatus("ok");
+            _patientVitals.setBpmStatus("ok");
             return true;
         }
     }
@@ -138,7 +138,7 @@ class Checker
             return _minSpo2;
         }
         
-        public static bool checkSpo2Vital(float _spo2Value, PatientVitals _patientVitals){
+        public static bool checkSpo2Vital(float _spo2Value, PatientVitalsStatus _patientVitals){
             if (_spo2Value < _minSpo2)
             {
                 _patientVitals.setSpo2Status("low");
@@ -176,7 +176,7 @@ class Checker
             return _maxRespRate;
         }
         
-        public static bool checkRespRateVital(float _respRateValue, PatientVitals _patientVitals){
+        public static bool checkRespRateVital(float _respRateValue, PatientVitalsStatus _patientVitals){
             if (_respRateValue < _minRespRate)
             {
                 _patientVitals.setRespRateStatus("low");
