@@ -39,7 +39,7 @@ class VitalCheck{
     }
     
     // check for all vital values 
-    static bool checkAllVitals(float _bmpValue,float _spo2Value, float _respRateValue, PatientVitalsStatus _patientVitals){
+    public static bool checkAllVitals(float _bmpValue,float _spo2Value, float _respRateValue, PatientVitalsStatus _patientVitals){
 
         return BPMVital.checkBpmVital(_bmpValue,_patientVitals) 
             && SPO2Vital.checkSpo2Vital (_spo2Value,_patientVitals) 
