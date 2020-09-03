@@ -5,18 +5,18 @@ class Checker
 {
     static bool vitalsAreOk(float bpm, float spo2, float respRate)
         {
-            if(checkSPO2(spo2) && checkBpmAndrespRate(bpm,respRate)){
-                return true;
-            }
-            return false;
+//             if(checkSPO2(spo2) && checkBpmAndrespRate(bpm,respRate)){
+//                 return true;
+//             }
+            return (checkBPM(bpm) && checkSPO2(spo2) && checkRespRate(respRate));
         }
     
-        static bool checkBpmAndrespRate(float bpm, float respRate){
-            if(checkBPM(bpm) && checkRespRate(respRate)){
-                return true;
-            }
-            return false;
-        }
+//         static bool checkBpmAndrespRate(float bpm, float respRate){
+//             if(checkBPM(bpm) && checkRespRate(respRate)){
+//                 return true;
+//             }
+//             return false;
+//         }
         
         static bool checkBPM(float bpm){
             if (bpm < 70 || bpm > 150)
