@@ -8,12 +8,96 @@ class Checker
         
         PatientVitalsStatus _patientVitals = new PatientVitalsStatus();
         
+//         float _normalBpmValue=100;
+//         float _lowBpmValue=40;
+//         float _highBpmValue=160;
+        
+//         float _normalSpo2Value=95;
+//         float _lowSpo2Value=80;
+        
+//         float _normalRespRateValue=60;
+//         float _lowRespRateValue=20;
+//         float _highRespRateValue=100;
+        
+        //All normal values test-condition
         VitalCheck.ExpectTrue(VitalCheck.checkAllVitals(100,95,60,_patientVitals));
         _patientVitals.displayAllVitalStatus();
         
+        //====================================[One abnormal vital test cases]==============================
+        
+        //low Bpm test-condition
         VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(40,91,92,_patientVitals));
         _patientVitals.displayAllVitalStatus();
         
+        //high Bpm test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(151,91,92,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //low Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(100,88,92,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+         //low RespRate test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(100,91,20,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+         //high RespRate test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(100,91,97,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //=========================[Combination of Two abnormal vitals test cases]==========================
+
+         //low Bpm and low Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(40,88,92,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //high bpm and low Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(151,88,92,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //low RespRate and low Spo2 test-condition 
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(100,87,20,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //high RespRate and low Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(100,87,97,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //low Bpm and low Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(40,95,20,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        
+        //high Bpm and high Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(151,95,97,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //low Bpm and high Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(40,95,97,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //high Bpm and low Spo2 test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(151,95,20,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //=========================[Combination of Three abnormal vitals test cases]=========================
+        
+        //low Bpm, low Spo2 and low RespRate test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(40,87,20,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //high Bpm, low Spo2 and low RespRate test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(151,87,20,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+  
+        //low Bpm, low Spo2 and high RespRate test-condition
+         VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(40,87,97,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
+        //high Bpm, low Spo2 and high RespRate test-condition
+        VitalCheck.ExpectFalse(VitalCheck.checkAllVitals(151,87,97,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+
         Console.WriteLine("All ok");
         return 0;
     }
@@ -22,7 +106,7 @@ class Checker
     
 class VitalCheck{
     
-    // [Test-case for good vital condition]
+    // [Test-condition for good vital condition]
     public static void ExpectTrue(bool expression) {
         if(!expression) {
             Console.WriteLine("Expected true, but got false");
@@ -30,7 +114,7 @@ class VitalCheck{
         }
     }
     
-    //[Test-case for abnormal vital condition]
+    //[Test-condition for abnormal vital condition]
     public static void ExpectFalse(bool expression) {
         if(expression) {
             Console.WriteLine("Expected false, but got true");
