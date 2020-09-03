@@ -15,6 +15,11 @@ class Checker
                             && RespRateVital.checkRespRateVital(92,_patientVitals));
         _patientVitals.displayAllVitalStatus();
         
+        VitalCheck.ExpectFalse( BPMVital.checkBpmVital(40,_patientVitals) 
+                            && SPO2Vital.checkSpo2Vital (95,_patientVitals) 
+                            && RespRateVital.checkRespRateVital(92,_patientVitals));
+        _patientVitals.displayAllVitalStatus();
+        
         Console.WriteLine("All ok");
         return 0;
     }
